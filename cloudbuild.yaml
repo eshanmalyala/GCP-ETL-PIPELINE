@@ -1,12 +1,12 @@
 steps:
   # Step 1: Deploy Terraform infrastructure
-  - name: 'hashicorp/terraform'
-    entrypoint: 'sh'
-    args:
-      - '-c'
-      - |
-        terraform -chdir=terraform init
-        terraform -chdir=terraform apply -auto-approve
+  # - name: 'hashicorp/terraform'
+  #   entrypoint: 'sh'
+  #   args:
+  #     - '-c'
+  #     - |
+  #       terraform -chdir=terraform init
+  #       terraform -chdir=terraform apply -auto-approve
 
   # Step 2: Build and deploy Dataflow Flex Template
   - name: 'gcr.io/cloud-builders/gcloud'
