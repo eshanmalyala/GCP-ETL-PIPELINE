@@ -7,7 +7,7 @@ variable "region" {
 }
 
 variable "bucket_name" {
-  default = "getwellsoon-bucket"
+  default = "getwellsoon-bucket-0"
 }
 
 variable "pubsub_topic" {
