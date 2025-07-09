@@ -1,6 +1,7 @@
 provider "google" {
     project = var.project_id
     region = var.region
+    impersonate_service_account = "getwellsoon@sharedproejcet-1.iam.gserviceaccount.com"
 }
 
 resource "google_storage_bucket" "dataflow_bucket" {
