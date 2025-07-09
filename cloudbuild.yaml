@@ -10,7 +10,9 @@ steps:
       - -c
       - |
         echo "Downloading schema from GCS..."
-        gsutil cp gs://myworkspace-579raj/bq.json ./dataflow-batch-job/terraform/bq_schema.json
+        gsutil cp gs://myworkspace-579raj/bq.json ./terraform/bq_schema.json
+        echo "Listing current directory structure..."
+        ls -R
 
   # Step 2: Apply Terraform to create infra (bucket, dataset, table, topic)
   - name: hashicorp/terraform:light
@@ -21,7 +23,7 @@ steps:
       - |
         terraform init
         terraform apply -auto-approve
-
+    dir: "terraform"
   # Step 3: Copy files to GCS bucket created in Terraform
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
     entrypoint: bash
