@@ -10,16 +10,16 @@ steps:
 
   # Step 2: Build and deploy Dataflow Flex Template
   - name: 'gcr.io/cloud-builders/gcloud'
-    args:
-      - dataflow
-      - flex-template
-      - build
-      - gs://getwellsoon-bucket/templates/streaming_template.json
-      - --sdk-language=PYTHON
-      - --flex-template-base-image=gcr.io/dataflow-templates-base/python3
-      - --metadata-file=dataflow/metadata.json
-      - --python-command=python3
-      - --python-module=pipeline
-      - --requirements-file=dataflow/requirements.txt
+      args:
+        - dataflow
+        - flex-template
+        - build
+        - gs://getwellsoon-bucket/templates/streaming_template.json
+        - --sdk-language=PYTHON
+        - --flex-template-base-image=gcr.io/dataflow-templates-base/python3
+        - --metadata-file=gs://getwellsoon-bucket/staging/dataflow_template/metadata.json
+        - --python-package-gcs-uri=gs://getwellsoon-bucket/staging/dataflow_template
+        - --temp-location=gs://getwellsoon-bucket/temp
+
 timeout: 1200s
 logsBucket: 'gs://getwellsoon-bucket'
