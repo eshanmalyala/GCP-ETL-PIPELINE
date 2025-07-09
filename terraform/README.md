@@ -8,7 +8,7 @@ pub_sub_topic:  getwellsoon-topic
 
 region:  europe-west1
 
-
+# schema = file("${path.module}/bq_schema.json")
 
 project-root/
 │
