@@ -23,6 +23,31 @@ resource "google_bigquery_dataset" "dataset" {
 resource "google_bigquery_table" "employee" {
   dataset_id = google_bigquery_dataset.dataset.dataset_id
   table_id   = var.table_name
-
-  schema = file("${path.module}/bq_schema.json")
+  schema = jsonencode([
+    {
+      name = "id"
+      type = "STRING"
+      mode = "NULLABLE"
+    },
+    {
+      name = "name"
+      type = "STRING"
+      mode = "NULLABLE"
+    },
+    {
+      name = "email"
+      type = "STRING"
+      mode = "NULLABLE"
+    },
+    {
+      name = "age"
+      type = "STRING"
+      mode = "NULLABLE"
+    },
+    {
+      name = "city"
+      type = "STRING"
+      mode = "NULLABLE"
+    }
+  ])
 }
