@@ -16,10 +16,10 @@ steps:
       - '-c'
       - |
         gcloud dataflow jobs run dataflow-job \
-          --gcs-location gs://dataflow-templates-europe-west1/latest/GCS_Text_to_BigQuery \
-          --region europe-west1 \
-          --staging-location gs://getwellsoon-bucket/temp/ \
-          --parameters inputFilePattern=gs://getwellsoon-bucket/user.csv,JSONPath=gs://getwellsoon-bucket/bq.json,outputTable=gcp-agent-garden:getwellsoon_dataset.employe,bigQueryLoadingTemporaryDirectory=gs://getwellsoon-bucket/,javascriptTextTransformGcsPath=gs://getwellsoon-bucket/udf.js,javascriptTextTransformFunctionName=transform
+          --gcs-location gs://dataflow-templates-us-central1/latest/GCS_Text_to_BigQuery \
+          --region $_REGION \
+          --staging-location gs://myworkspace-579raj/temp/ \
+          --parameters inputFilePattern=gs://myworkspace-579raj/user.csv,JSONPath=gs://myworkspace-579raj/bq.json,outputTable=$_TABLE,bigQueryLoadingTemporaryDirectory=gs://myworkspace-579raj/,javascriptTextTransformGcsPath=gs://myworkspace-579raj/udf.js,javascriptTextTransformFunctionName=transform
 
 
 # steps:
