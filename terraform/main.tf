@@ -7,11 +7,6 @@ resource "google_storage_bucket" "dataflow_bucket" {
     name = var.bucket_name
     location = var.region 
 }
-resource "google_storage_bucket_iam_member" "dataflow_sa_access" {
-  bucket = google_storage_bucket.dataflow_bucket.name
-  role   = "roles/storage.objectAdmin"
-  member = "serviceAccount:dataflow-getwellsoon@sharedproejcet-1.iam.gserviceaccount.com"
-}
 resource "google_pubsub_topic" "topic" {
     name = var.pubsub_topic
     lifecycle {
