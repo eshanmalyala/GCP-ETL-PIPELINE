@@ -1,4 +1,0 @@
-apache-beam[gcp]==2.56.0
-pyyaml==6.0
-google-cloud-pubsub==2.20.0
-google-cloud-bigquery==3.21.0
