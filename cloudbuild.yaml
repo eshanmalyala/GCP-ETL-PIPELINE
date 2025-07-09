@@ -7,19 +7,19 @@ steps:
   #     - |
   #       terraform -chdir=terraform init
   #       terraform -chdir=terraform apply -auto-approve
-
+  
   # Step 2: Build and deploy Dataflow Flex Template
-    - name: 'gcr.io/cloud-builders/gcloud'
-        args:
-          - dataflow
-          - flex-template
-          - build
-          - gs://getwellsoon-bucket/templates/streaming_template.json
-          - --sdk-language=PYTHON
-          - --flex-template-base-image=gcr.io/dataflow-templates-base/python3
-          - --metadata-file=gs://getwellsoon-bucket/staging/dataflow_template/metadata.json
-          - --python-package-gcs-uri=gs://getwellsoon-bucket/staging/dataflow_template
-          - --temp-location=gs://getwellsoon-bucket/temp
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - dataflow
+      - flex-template
+      - build
+      - gs://getwellsoon-bucket/templates/streaming_template.json
+      - --sdk-language=PYTHON
+      - --flex-template-base-image=gcr.io/dataflow-templates-base/python3
+      - --metadata-file=gs://getwellsoon-bucket/staging/dataflow_template/metadata.json
+      - --python-package-gcs-uri=gs://getwellsoon-bucket/staging/dataflow_template
+      - --temp-location=gs://getwellsoon-bucket/temp
 
 timeout: 1200s
 logsBucket: 'gs://getwellsoon-bucket'
