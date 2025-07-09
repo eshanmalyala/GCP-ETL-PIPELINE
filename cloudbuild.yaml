@@ -12,6 +12,7 @@ steps:
         terraform init
         terraform apply -auto-approve
 
+
   # Step 2: Run Dataflow Job
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: bash
