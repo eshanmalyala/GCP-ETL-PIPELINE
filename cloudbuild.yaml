@@ -1,5 +1,6 @@
 substitutions:
   _REGION: 'us-central1'
+  _BUCKET: 'gs://getwellsoon-bucket-0'
 
 steps:
   # Step 1: Download schema file from GCS into Terraform module folder
@@ -28,10 +29,9 @@ steps:
       - -c
       - |
         echo "Copying files to GCS bucket..."
-        BUCKET="gs://getwellsoon-bucket-0"
-        gsutil cp dataflow-batch-job/bq.json $BUCKET/
-        gsutil cp dataflow-batch-job/udf.js $BUCKET/
-        gsutil cp dataflow-batch-job/user.csv $BUCKET/
+        gsutil cp dataflow-batch-job/bq.json $_BUCKET/
+        gsutil cp dataflow-batch-job/udf.js $_BUCKET/
+        gsutil cp dataflow-batch-job/user.csv $_BUCKET/
   # Step 4: Trigger Dataflow job
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
     entrypoint: bash
