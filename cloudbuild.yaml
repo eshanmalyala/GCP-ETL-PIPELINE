@@ -49,4 +49,4 @@ steps:
 #       - --temp-location=gs://getwellsoon-bucket/temp
 
 # timeout: 1200s
-# logsBucket: 'gs://getwellsoon-bucket'
+logsBucket: 'gs://getwellsoon-bucket'
