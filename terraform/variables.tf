@@ -17,3 +17,6 @@ variable "pubsub_topic" {
 variable "bq_dataset" {
   default = "getwellsoon_dataset"
 }
+variable "table_name" {
+  default = "employe"
+}
