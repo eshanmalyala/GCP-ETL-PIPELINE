@@ -2,6 +2,15 @@ substitutions:
   _REGION: 'us-central1'
   _TABLE: 'sharedproejcet-1:dataflow.employe'
 steps:
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        echo "Running as:"
+        gcloud config list account
+        gcloud auth list
+
   # Step 1: Terraform Apply
   - name: hashicorp/terraform:light
     dir: terraform
