@@ -3,14 +3,14 @@ substitutions:
   _TABLE: 'sharedproejcet-1:dataflow.employe'
 steps:
   # Step 1: Terraform Apply
-  - name: hashicorp/terraform:light
-    dir: terraform
-    entrypoint: sh
-    args:
-      - "-c"
-      - |
-        terraform init
-        terraform apply -auto-approve
+  # - name: hashicorp/terraform:light
+  #   dir: terraform
+  #   entrypoint: sh
+  #   args:
+  #     - "-c"
+  #     - |
+  #       terraform init
+  #       terraform apply -auto-approve
 
 
   # Step 2: Run Dataflow Job
