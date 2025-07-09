@@ -1,0 +1,18 @@
+project_id: gcp-agent-garden
+region: europe-west1
+
+pubsub:
+  topic: projects/gcp-agent-garden/topics/getwellsoon-topic
+
+bigquery:
+  dataset: getwellsoon_dataset
+  table: customer_data
+  output_table: gcp-agent-garden:getwellsoon_dataset.customer_data
+
+mask_fields:
+  - name
+  - ssn
+
+schema: >
+  customer_id:STRING, name:STRING, email:STRING, ssn:STRING,
+  address:STRING, timestamp:TIMESTAMP
