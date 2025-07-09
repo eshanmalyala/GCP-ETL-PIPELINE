@@ -1,5 +1,5 @@
 variable "project_id" {
-  default = "gcp-agent-garden"
+  default = "sharedproejcet-1"
 }
 
 variable "region" {
