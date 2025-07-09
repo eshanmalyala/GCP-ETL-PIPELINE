@@ -10,8 +10,14 @@ resource "google_storage_bucket" "dataflow_bucket" {
 
 resource "google_pubsub_topic" "topic" {
     name = var.pubsub_topic
+    lifecycle {
+        prevent_destroy = true
+      }
 }
 resource "google_bigquery_dataset" "dataset" {
     dataset_id = var.bq_dataset
     location = var.region 
+    lifecycle {
+        prevent_destroy = true
+      }
 }
