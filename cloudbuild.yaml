@@ -18,8 +18,8 @@ steps:
       - --sdk-language=PYTHON
       - --flex-template-base-image=gcr.io/dataflow-templates-base/python3
       - --metadata-file=dataflow/metadata.json
-      - --entry-point=dataflow/pipeline.py
-      - --pip-requirements-file=dataflow/requirements.txt
-
+      - --python-command=python3
+      - --python-module=pipeline
+      - --requirements-file=dataflow/requirements.txt
 timeout: 1200s
 logsBucket: 'gs://getwellsoon-bucket'
