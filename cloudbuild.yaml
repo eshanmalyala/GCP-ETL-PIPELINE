@@ -36,16 +36,6 @@ steps:
         gsutil cp dataflow-batch-job/udf.js $_BUCKET/
         gsutil cp dataflow-batch-job/user.csv $_BUCKET/
 
-  # Step 3: Copy files to GCS bucket created in Terraform
-  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
-    entrypoint: bash
-    args:
-      - -c
-      - |
-        echo "Copying files to GCS bucket..."
-        gsutil cp dataflow-batch-job/bq.json $_BUCKET/
-        gsutil cp dataflow-batch-job/udf.js $_BUCKET/
-        gsutil cp dataflow-batch-job/user.csv $_BUCKET/
   # Step 4: Trigger Dataflow job
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
     entrypoint: bash
