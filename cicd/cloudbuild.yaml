@@ -1,0 +1,24 @@
+steps:
+  # Step 1: Deploy Terraform infrastructure
+  - name: 'hashicorp/terraform'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+        terraform -chdir=terraform init
+        terraform -chdir=terraform apply -auto-approve
+
+  # Step 2: Build and deploy Dataflow Flex Template
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - dataflow
+      - flex-template
+      - build
+      - gs://getwellsoon-bucket/templates/streaming_template.json
+      - --sdk-language=PYTHON
+      - --flex-template-base-image=gcr.io/dataflow-templates-base/python3
+      - --metadata-file=dataflow/metadata.json
+      - --entry-point=dataflow/pipeline.py
+      - --pip-requirements-file=dataflow/requirements.txt
+
+timeout: 1200s
