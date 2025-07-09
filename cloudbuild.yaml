@@ -3,6 +3,15 @@ substitutions:
   _TABLE: 'sharedproejcet-1:dataflow.employe'
 steps:
   # Step 1: Terraform Apply
+  
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        echo "Downloading schema from GCS..."
+        gsutil cp gs://myworkspace-579raj/bq.json ./bq_schema.json
+        
   - name: hashicorp/terraform:light
     dir: terraform
     entrypoint: sh
