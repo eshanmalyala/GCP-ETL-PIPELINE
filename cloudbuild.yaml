@@ -9,9 +9,9 @@ steps:
     args:
       - -c
       - |
-        echo "Downloading schema from GCS..."
+       # echo "Downloading schema from GCS..."
        # gsutil cp gs://myworkspace-579raj/bq.json ./terraform/bq_schema.json
-       gsutil cp  ./dataflow-batch-job/bq.json  ./terraform/bq_schema.json
+       #gsutil cp  ./dataflow-batch-job/bq.json  ./terraform/bq_schema.json
 
         echo "Listing current directory structure..."
         ls -R
