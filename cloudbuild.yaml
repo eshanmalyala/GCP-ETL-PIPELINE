@@ -14,7 +14,7 @@ steps:
       - dataflow
       - flex-template
       - build
-      - gs://getwellsoon-bucket-1/templates/streaming_template.json
+      - gs://getwellsoon-bucket/templates/streaming_template.json
       - --sdk-language=PYTHON
       - --flex-template-base-image=gcr.io/dataflow-templates-base/python3
       - --metadata-file=dataflow/metadata.json
@@ -22,4 +22,4 @@ steps:
       - --pip-requirements-file=dataflow/requirements.txt
 
 timeout: 1200s
-logsBucket: 'gs://getwellsoon-bucket-1'
+logsBucket: 'gs://getwellsoon-bucket'
