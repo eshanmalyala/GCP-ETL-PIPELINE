@@ -1,9 +1,23 @@
 {
-  "fields": [
-    { "name": "id", "type": "STRING", "mode": "NULLABLE" },
-    { "name": "name", "type": "STRING", "mode": "NULLABLE" },
-    { "name": "email", "type": "STRING", "mode": "NULLABLE" },
-    { "name": "age", "type": "STRING", "mode": "NULLABLE" },
-    { "name": "city", "type": "STRING", "mode": "NULLABLE" }
-  ]
-}
+    "BigQuery Schema": [{
+      "name": "id",
+      "type": "STRING"
+     },
+     {
+      "name": "name",
+      "type": "STRING"
+     },
+     {
+      "name": "email",
+      "type": "STRING"
+     },
+     {
+      "name": "age",
+      "type": "STRING"
+     },
+     {
+      "name": "city",
+      "type": "STRING"
+     }
+    ]
+   }
