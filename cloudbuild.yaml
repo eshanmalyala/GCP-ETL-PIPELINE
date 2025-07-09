@@ -14,7 +14,7 @@ steps:
 
   # Step 2: Apply Terraform to create infra (bucket, dataset, table, topic)
   - name: hashicorp/terraform:light
-    dir: dataflow-batch-job/terraform
+    dir: terraform
     entrypoint: sh
     args:
       - -c
