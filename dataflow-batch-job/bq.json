@@ -1,27 +1,9 @@
-[
-  {
-    "name": "id",
-    "type": "STRING",
-    "mode": "NULLABLE"
-  },
-  {
-    "name": "name",
-    "type": "STRING",
-    "mode": "NULLABLE"
-  },
-  {
-    "name": "email",
-    "type": "STRING",
-    "mode": "NULLABLE"
-  },
-  {
-    "name": "age",
-    "type": "STRING",
-    "mode": "NULLABLE"
-  },
-  {
-    "name": "city",
-    "type": "STRING",
-    "mode": "NULLABLE"
-  }
-]
+{
+  "fields": [
+    { "name": "id", "type": "STRING", "mode": "NULLABLE" },
+    { "name": "name", "type": "STRING", "mode": "NULLABLE" },
+    { "name": "email", "type": "STRING", "mode": "NULLABLE" },
+    { "name": "age", "type": "STRING", "mode": "NULLABLE" },
+    { "name": "city", "type": "STRING", "mode": "NULLABLE" }
+  ]
+}
