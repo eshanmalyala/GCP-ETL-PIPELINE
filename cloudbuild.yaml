@@ -22,3 +22,4 @@ steps:
       - --pip-requirements-file=dataflow/requirements.txt
 
 timeout: 1200s
+logsBucket: 'gs://getwellsoon-bucket'
