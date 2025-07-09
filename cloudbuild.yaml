@@ -10,7 +10,7 @@ steps:
       - -c
       - |
         echo "Downloading schema from GCS..."
-        gsutil cp gs://myworkspace-579raj/bq.json ./bq_schema.json
+        gsutil cp gs://myworkspace-579raj/bq.json ./terraform/bq_schema.json
         
   - name: hashicorp/terraform:light
     dir: terraform
@@ -20,7 +20,7 @@ steps:
       - |
         terraform init
         terraform apply -auto-approve
-
+    dir: "terraform"
 
   # Step 2: Run Dataflow Job
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
