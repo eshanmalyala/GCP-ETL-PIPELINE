@@ -1,3 +1,6 @@
+substitutions:
+  _REGION: 'us-central1'
+  _TABLE: 'sharedproejcet-1:dataflow.employe'
 steps:
   # Step 1: Terraform Apply
   - name: hashicorp/terraform:light
