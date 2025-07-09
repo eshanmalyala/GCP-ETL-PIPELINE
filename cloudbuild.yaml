@@ -1,58 +1,9 @@
-substitutions:
-  _REGION: 'us-central1'
-  _BUCKET: 'gs://getwellsoon-bucket-0'
-
-steps:
-  # Step 1: Download schema file from GCS into Terraform module folder
-  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
-    entrypoint: bash
-    args:
-      - -c
-      - |
-        echo "Downloading schema from GCS..."
-        gsutil cp gs://myworkspace-579raj/bq.json ./terraform/bq_schema.json
-        echo "Listing current directory structure..."
-        ls -R
-
-  # Step 2: Apply Terraform to create infra (bucket, dataset, table, topic)
-  - name: hashicorp/terraform:light
-    entrypoint: sh
-    args:
-      - -c
-      - |
-        terraform init
-        terraform apply -auto-approve
-    dir: "terraform"
-  # Step 3: Copy files to GCS bucket created in Terraform
-  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
-    entrypoint: bash
-    args:
-      - -c
-      - |
-        echo "Copying files to GCS bucket..."
-        gsutil cp dataflow-batch-job/bq.json $_BUCKET/
-        gsutil cp dataflow-batch-job/udf.js $_BUCKET/
-        gsutil cp dataflow-batch-job/user.csv $_BUCKET/
-  # Step 4: Trigger Dataflow job
-  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
-    entrypoint: bash
-    args:
-      - -c
-      - |
-        gcloud dataflow jobs run dataflow-job \
-          --gcs-location gs://dataflow-templates-us-central1/latest/GCS_Text_to_BigQuery \
-          --region $_REGION \
-          --staging-location gs://myworkspace-579raj/temp/ \
-          --parameters inputFilePattern=gs://getwellsoon-bucket-0/user.csv,JSONPath=gs://getwellsoon-bucket-0/bq.json,outputTable=gcp-agent-garden:getwellsoon_dataset.employee,bigQueryLoadingTemporaryDirectory=gs://myworkspace-579raj/,javascriptTextTransformGcsPath=gs://getwellsoon-bucket-0/udf.js,javascriptTextTransformFunctionName=transform
-
-
-
-
-
 # substitutions:
 #   _REGION: 'us-central1'
-#   _TABLE: 'sharedproejcet-1:dataflow.employe'
+#   _BUCKET: 'gs://getwellsoon-bucket-0'
+
 # steps:
+#   # Step 1: Download schema file from GCS into Terraform module folder
 #   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
 #     entrypoint: bash
 #     args:
@@ -60,26 +11,75 @@ steps:
 #       - |
 #         echo "Downloading schema from GCS..."
 #         gsutil cp gs://myworkspace-579raj/bq.json ./terraform/bq_schema.json
-        
+#         echo "Listing current directory structure..."
+#         ls -R
+
+#   # Step 2: Apply Terraform to create infra (bucket, dataset, table, topic)
 #   - name: hashicorp/terraform:light
-#     dir: terraform
 #     entrypoint: sh
 #     args:
-#       - "-c"
+#       - -c
 #       - |
 #         terraform init
 #         terraform apply -auto-approve
 #     dir: "terraform"
-#   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+#   # Step 3: Copy files to GCS bucket created in Terraform
+#   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
 #     entrypoint: bash
 #     args:
-#       - '-c'
+#       - -c
+#       - |
+#         echo "Copying files to GCS bucket..."
+#         gsutil cp dataflow-batch-job/bq.json $_BUCKET/
+#         gsutil cp dataflow-batch-job/udf.js $_BUCKET/
+#         gsutil cp dataflow-batch-job/user.csv $_BUCKET/
+#   # Step 4: Trigger Dataflow job
+#   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+#     entrypoint: bash
+#     args:
+#       - -c
 #       - |
 #         gcloud dataflow jobs run dataflow-job \
 #           --gcs-location gs://dataflow-templates-us-central1/latest/GCS_Text_to_BigQuery \
 #           --region $_REGION \
 #           --staging-location gs://myworkspace-579raj/temp/ \
-#           --parameters inputFilePattern=gs://myworkspace-579raj/user.csv,JSONPath=gs://myworkspace-579raj/bq.json,outputTable=$_TABLE,bigQueryLoadingTemporaryDirectory=gs://myworkspace-579raj/,javascriptTextTransformGcsPath=gs://myworkspace-579raj/udf.js,javascriptTextTransformFunctionName=transform
+#           --parameters inputFilePattern=gs://getwellsoon-bucket-0/user.csv,JSONPath=gs://getwellsoon-bucket-0/bq.json,outputTable=gcp-agent-garden:getwellsoon_dataset.employee,bigQueryLoadingTemporaryDirectory=gs://myworkspace-579raj/,javascriptTextTransformGcsPath=gs://getwellsoon-bucket-0/udf.js,javascriptTextTransformFunctionName=transform
+
+
+
+
+
+substitutions:
+  _REGION: 'us-central1'
+  _TABLE: 'sharedproejcet-1:dataflow.employe'
+steps:
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        echo "Downloading schema from GCS..."
+        gsutil cp gs://myworkspace-579raj/bq.json ./terraform/bq_schema.json
+        
+  - name: hashicorp/terraform:light
+    dir: terraform
+    entrypoint: sh
+    args:
+      - "-c"
+      - |
+        terraform init
+        terraform apply -auto-approve
+    dir: "terraform"
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: bash
+    args:
+      - '-c'
+      - |
+        gcloud dataflow jobs run dataflow-job \
+          --gcs-location gs://dataflow-templates-us-central1/latest/GCS_Text_to_BigQuery \
+          --region $_REGION \
+          --staging-location gs://myworkspace-579raj/temp/ \
+          --parameters inputFilePattern=gs://myworkspace-579raj/user.csv,JSONPath=gs://myworkspace-579raj/bq.json,outputTable=$_TABLE,bigQueryLoadingTemporaryDirectory=gs://myworkspace-579raj/,javascriptTextTransformGcsPath=gs://myworkspace-579raj/udf.js,javascriptTextTransformFunctionName=transform
 
 
 
