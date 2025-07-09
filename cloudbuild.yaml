@@ -16,7 +16,6 @@ steps:
 
   # Step 2: Apply Terraform to create infra (bucket, dataset, table, topic)
   - name: hashicorp/terraform:light
-    dir: terraform
     entrypoint: sh
     args:
       - -c
@@ -76,17 +75,6 @@ steps:
 #     args:
 #       - '-c'
 #       - |
-#         echo "Copying files to GCS bucket..."
-#         BUCKET="gs://getwellsoon-bucket-0"
-#         gsutil cp dataflow-batch-job/bq.json $${BUCKET}/
-#         gsutil cp dataflow-batch-job/udf.js $${BUCKET}/
-#         gsutil cp dataflow-batch-job/user.csv $${BUCKET}/
-  
-#   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-#     entrypoint: bash
-#     args:
-#       - '-c'
-#       - |
 #         gcloud dataflow jobs run dataflow-job \
 #           --gcs-location gs://dataflow-templates-us-central1/latest/GCS_Text_to_BigQuery \
 #           --region $_REGION \
@@ -94,28 +82,5 @@ steps:
 #           --parameters inputFilePattern=gs://myworkspace-579raj/user.csv,JSONPath=gs://myworkspace-579raj/bq.json,outputTable=$_TABLE,bigQueryLoadingTemporaryDirectory=gs://myworkspace-579raj/,javascriptTextTransformGcsPath=gs://myworkspace-579raj/udf.js,javascriptTextTransformFunctionName=transform
 
 
-# steps:
-#   # Step 1: Deploy Terraform infrastructure
-#   # - name: 'hashicorp/terraform'
-#   #   entrypoint: 'sh'
-#   #   args:
-#   #     - '-c'
-#   #     - |
-#   #       terraform -chdir=terraform init
-#   #       terraform -chdir=terraform apply -auto-approve
-  
-#   # Step 2: Build and deploy Dataflow Flex Template
-#   - name: 'gcr.io/cloud-builders/gcloud'
-#     args:
-#       - dataflow
-#       - flex-template
-#       - build
-#       - gs://getwellsoon-bucket/templates/streaming_template.json
-#       - --sdk-language=PYTHON
-#       - --flex-template-base-image=gcr.io/dataflow-templates-base/python3
-#       - --metadata-file=gs://getwellsoon-bucket/staging/dataflow_template/metadata.json
-#       - --python-package-gcs-uri=gs://getwellsoon-bucket/staging/dataflow_template
-#       - --temp-location=gs://getwellsoon-bucket/temp
 
-# timeout: 1200s
 logsBucket: 'gs://myworkspace-579raj'
