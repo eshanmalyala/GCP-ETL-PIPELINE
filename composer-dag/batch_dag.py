@@ -47,7 +47,7 @@ with models.DAG(
                     "-c",
                     f"""
                     gcloud dataflow jobs run dataflow-pii-reco-job-{{{{ ts_nodash }}}} \
-                      --gcs-location gs://dataflow-templates-us-central1/latest/GCS_Text_to_BigQuery \
+                      --gcs-location gs://dataflow-templates-europe-west1/latest/GCS_Text_to_BigQuery \
                       --region {REGION} \
                       --staging-location {TEMP_LOCATION} \
                       --parameters inputFilePattern={GCS_CSV_PATH},JSONPath={GCS_JSON_PATH},outputTable={RECO_TABLE},bigQueryLoadingTemporaryDirectory={TEMP_LOCATION},javascriptTextTransformGcsPath={GCS_UDF_PATH},javascriptTextTransformFunctionName=transform
