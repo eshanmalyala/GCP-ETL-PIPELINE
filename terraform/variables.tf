@@ -7,15 +7,15 @@ variable "region" {
 }
 
 variable "bucket_name" {
-  default = "getwellsoon-bucket-10"
+  default = "getwellsoon-bucket-11"
 }
 
 variable "pubsub_topic" {
-  default = "getwellsoon-topic-10"
+  default = "getwellsoon-topic-11"
 }
 
 variable "bq_dataset" {
-  default = "getwellsoon_dataset-10"
+  default = "getwellsoon_dataset_today"
 }
 variable "table_name" {
   default = "employe"
