@@ -47,7 +47,7 @@ steps:
           --gcs-location gs://dataflow-templates-us-central1/latest/GCS_Text_to_BigQuery \
           --region $_REGION \
           --staging-location gs://myworkspace-579raj/temp/ \
-          --parameters inputFilePattern=gs://getwellsoon-bucket-0/user.csv,JSONPath=gs://getwellsoon-bucket-0/bq.json,outputTable=gcp-agent-garden:getwellsoon_dataset.employee,bigQueryLoadingTemporaryDirectory=gs://myworkspace-579raj/,javascriptTextTransformGcsPath=gs://getwellsoon-bucket-0/udf.js,javascriptTextTransformFunctionName=transform
+          --parameters inputFilePattern=gs://getwellsoon-bucket-0/user.csv,JSONPath=gs://getwellsoon-bucket-0/bq.json,outputTable=sharedproejcet-1:getwellsoon_dataset.employee,bigQueryLoadingTemporaryDirectory=gs://myworkspace-579raj/,javascriptTextTransformGcsPath=gs://getwellsoon-bucket-0/udf.js,javascriptTextTransformFunctionName=transform
 
 
 
