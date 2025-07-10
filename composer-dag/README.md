@@ -1,1 +1,11 @@
-
+# Configs
+PROJECT_ID = "gcp-agent-garden"
+BUCKET_NAME = "getwellsoon-bucket"
+REGION = "europe-west1"
+DATASET = "getwellsoon_dataset"
+TABLE = "employee"
+GCS_CSV_PATH = f"gs://{BUCKET_NAME}/employe_data.csv"
+GCS_JSON_PATH = f"gs://{BUCKET_NAME}/bq.json"
+GCS_UDF_PATH = f"gs://{BUCKET_NAME}/udf.js"
+TEMP_LOCATION = "gs://myworkspace-579raj/temp/"
+RECO_TABLE = f"{PROJECT_ID}.{DATASET}.{TABLE}"
