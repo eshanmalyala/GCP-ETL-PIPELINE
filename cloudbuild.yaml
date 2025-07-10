@@ -4,27 +4,27 @@ substitutions:
 
 steps:
   # Step 1: Download schema file from GCS into Terraform module folder
-  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
-    entrypoint: bash
-    args:
-      - -c
-      - |
-       # echo "Downloading schema from GCS..."
-       # gsutil cp gs://myworkspace-579raj/bq.json ./terraform/bq_schema.json
-       #gsutil cp  ./dataflow-batch-job/bq.json  ./terraform/bq_schema.json
+  # - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+  #   entrypoint: bash
+  #   args:
+  #     - -c
+  #     - |
+  #      # echo "Downloading schema from GCS..."
+  #      # gsutil cp gs://myworkspace-579raj/bq.json ./terraform/bq_schema.json
+  #      #gsutil cp  ./dataflow-batch-job/bq.json  ./terraform/bq_schema.json
 
-        echo "Listing current directory structure..."
-        ls -R
+  #       echo "Listing current directory structure..."
+  #       ls -R
 
   # Step 2: Apply Terraform to create infra (bucket, dataset, table, topic)
-  - name: hashicorp/terraform:light
-    dir: terraform
-    entrypoint: sh
-    args:
-      - -c
-      - |
-        terraform init
-        terraform apply -auto-approve
+  # - name: hashicorp/terraform:light
+  #   dir: terraform
+  #   entrypoint: sh
+  #   args:
+  #     - -c
+  #     - |
+  #       terraform init
+  #       terraform apply -auto-approve
 
   # Step 3: Copy files to GCS bucket created in Terraform
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
