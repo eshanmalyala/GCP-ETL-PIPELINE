@@ -1,9 +1,37 @@
 {
-  "fields": [
-    { "name": "id", "type": "STRING", "mode": "NULLABLE" },
-    { "name": "name", "type": "STRING", "mode": "NULLABLE" },
-    { "name": "email", "type": "STRING", "mode": "NULLABLE" },
-    { "name": "age", "type": "STRING", "mode": "NULLABLE" },
-    { "name": "city", "type": "STRING", "mode": "NULLABLE" }
-  ]
+    "BigQuery Schema": [
+        {
+            "name": "EmployeeID",
+            "type": "INTEGER"
+        },
+        {
+            "name": "FirstName",
+            "type": "STRING"
+        },
+        {
+            "name": "LastName",
+            "type": "STRING"
+        },
+        {
+            "name": "Department",
+            "type": "STRING"
+        },
+        {
+            "name": "Position",
+            "type": "STRING"
+    
+        },
+        {
+            "name": "Salary",
+            "type": "INTERGER"
+        },
+        {
+            "name": "JoiningDate",
+            "type": "DATE"
+        },
+        {
+            "name": "Country",
+            "type": "STRING"
+        }
+    ]
 }
